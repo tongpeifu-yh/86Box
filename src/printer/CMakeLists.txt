@@ -21,6 +21,7 @@ add_library(print OBJECT
     prt_escp.c
     prt_text.c
     prt_ps.c
+    prt_tofile.c
 )
 
 if(PCL)

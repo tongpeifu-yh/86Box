@@ -39,6 +39,7 @@ static const struct {
     {"dss",             &dss_device               },
     {"lpt_dac",         &lpt_dac_device           },
     {"lpt_dac_stereo",  &lpt_dac_stereo_device    },
+    {"prt_tofile",      &lpt_prt_tofile_device    },
     {"text_prt",        &lpt_prt_text_device      },
     {"dot_matrix",      &lpt_prt_escp_device      },
     {"postscript",      &lpt_prt_ps_device        },
