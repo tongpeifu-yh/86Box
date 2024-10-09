@@ -66,9 +66,13 @@ void flush_buffer(printer_t *printer)
             time_t now = time(NULL);
             strftime(filename, sizeof(filename), "print_%Y%m%d_%H%M%S.prn", localtime(&now));
             path_append_filename(fullname, usr_path, "printer");
+            // if not exists, create the directory
+            if (!plat_dir_check(fullname))
+                plat_dir_create(fullname);
             path_slash(fullname);
             strcat(fullname, filename);
             printer->file = fopen(fullname, "ab");
+            // if fail to create file, return without writing
             if(printer->file == NULL) {
                 fprintf(stderr, "Can't open file %s\n", fullname);
                 return;
