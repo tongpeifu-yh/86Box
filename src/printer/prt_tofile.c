@@ -75,6 +75,9 @@ void flush_buffer(printer_t *printer)
             // if fail to create file, return without writing
             if(printer->file == NULL) {
                 fprintf(stderr, "Can't open file %s\n", fullname);
+                // Here we still need to reset the buffer cursor, otherwise it 
+                // will cross the boundary at next writing.
+                printer->bcursor = 0;
                 return;
             }
         }
