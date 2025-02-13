@@ -271,6 +271,7 @@ reset_common(int hard)
     stack32        = 0;
     msr.fcr        = (1 << 8) | (1 << 9) | (1 << 12) | (1 << 16) | (1 << 19) | (1 << 21);
     msw            = 0;
+    new_ne         = 0;
     if (hascache)
         cr0 = 1 << 30;
     else
@@ -383,9 +384,6 @@ softresetx86(void)
 {
     if (soft_reset_mask)
         return;
-
-    if (ibm8514_active || xga_active)
-        vga_on = 1;
 
     reset_common(0);
 }

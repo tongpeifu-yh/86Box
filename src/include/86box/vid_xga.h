@@ -31,13 +31,11 @@ typedef struct xga_hwcursor_t {
 } xga_hwcursor_t;
 
 typedef struct xga_t {
-    mem_mapping_t  membios_mapping;
     mem_mapping_t  memio_mapping;
     mem_mapping_t  linear_mapping;
     mem_mapping_t  video_mapping;
     rom_t          bios_rom;
-    rom_t          membios_rom;
-    rom_t          vga_bios_rom;
+    rom_t          bios_rom2;
     xga_hwcursor_t hwcursor;
     xga_hwcursor_t hwcursor_latch;
     PALETTE        extpal;
@@ -153,6 +151,7 @@ typedef struct xga_t {
     int a5_test;
     int type;
     int bus;
+    int busy;
 
     uint32_t linear_base;
     uint32_t linear_size;
@@ -241,8 +240,6 @@ typedef struct xga_t {
         uint16_t px_map_height[4];
         uint32_t px_map_base[4];
     } accel;
-
-    int big_endian_linear;
 } xga_t;
 
 #endif /*VIDEO_XGA_H*/
